@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 
-export function WorkExperienceItem({experience}) {
+export function WorkExperienceItem({experience, removeWorkExperienceItem}) {
   return (
     <Container>
       <Card.Body >
@@ -16,7 +16,7 @@ export function WorkExperienceItem({experience}) {
             <Card.Text>{experience.dateFrom} - {experience.dateTo}</Card.Text>
           </Col>
           <Col className='d-flex justify-content-center align-items-center'>
-            <Button variant="outline-danger" size="sm" type="submit">X</Button>
+            <Button onClick={() => removeWorkExperienceItem(experience.id)} variant="outline-danger" size="sm" type="submit">X</Button>
           </Col>
         </Row>
       </Card.Body>

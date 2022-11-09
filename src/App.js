@@ -17,8 +17,7 @@ import "./styles/app.css";
 import { useState } from "react";
 
 const demoGeneralInfo = {
-  firstName: "Jonas",
-  lastName: "Jonaitis",
+  name: "Jonas Jonaitis",
   email: "jonas@jo.lt",
   phoneNumber: 866612345,
 };
@@ -64,6 +63,14 @@ export function App() {
   const [education, setEducation] = useState(demoEducationInfo);
   const [workExperience, setWorkExperience] = useState(demoWorkExperience);
 
+  function removeEducationItem(id) {
+    setEducation(education.filter((item) => item.id !== id));
+  }
+
+  function removeWorkExperienceItem(id) {
+    setWorkExperience(workExperience.filter((item) => item.id !== id));
+  }
+
   return (
     <>
       <Header />
@@ -71,24 +78,28 @@ export function App() {
         <Row>
           <Col>
             <div className="main">
-              <GeneralInfo />
-              <Education />
-              <WorkExperience />
+              <GeneralInfo value={generalInfo} onChange={setGeneralInfo} />
+              <Education education={education} setEducation={setEducation} />
+              <WorkExperience workExperience={workExperience} setWorkExperience={setWorkExperience} />
             </div>
           </Col>
           <Col>
             <CvContainer>
               <GeneralInfoDisplay generalInfo={generalInfo} />
-              <EducationDisplay>
-                {education.map((item) => (
-                  <EducationItem key={item.id} education={item} />
-                ))}
-              </EducationDisplay>
-              <WorkExperienceDisplay>
-                {workExperience.map((item) => (
-                  <WorkExperienceItem key={item.id} experience={item} />
-                ))}
-              </WorkExperienceDisplay>
+              {education.length !== 0 && (
+                <EducationDisplay>
+                  {education.map((item) => (
+                    <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} />
+                  ))}
+                </EducationDisplay>
+              )}
+              {workExperience.length !== 0 && (
+                <WorkExperienceDisplay>
+                  {workExperience.map((item) => (
+                    <WorkExperienceItem key={item.id} experience={item} removeWorkExperienceItem={removeWorkExperienceItem} />
+                  ))}
+                </WorkExperienceDisplay>
+              )}
             </CvContainer>
           </Col>
         </Row>

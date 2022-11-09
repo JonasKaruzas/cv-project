@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 
-export function EducationItem({education}) {
+export function EducationItem({education, removeEducationItem}) {
   return (
     <Container>
       <Card.Body >
@@ -16,7 +16,7 @@ export function EducationItem({education}) {
             <Card.Text>{education.dateFrom} - {education.dateTo}</Card.Text>
           </Col>
           <Col className='d-flex justify-content-center align-items-center'>
-            <Button variant="outline-danger" size="sm" type="submit">X</Button>
+            <Button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit">X</Button>
           </Col>
         </Row>
       </Card.Body>
