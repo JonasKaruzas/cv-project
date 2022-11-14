@@ -8,6 +8,7 @@ import { EducationDisplay } from "./components/EducationDisplay";
 import { EducationItem } from "./components/EducationItem";
 import { WorkExperienceDisplay } from "./components/WorkExperienceDisplay";
 import { WorkExperienceItem } from "./components/WorkExperienceItem";
+import { EditModal } from "./components/EditModal";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -62,7 +63,9 @@ const demoWorkExperience = [
 export function App() {
   const [generalInfo, setGeneralInfo] = useState(demoGeneralInfo);
   const [education, setEducation] = useState(demoEducationInfo);
+  const [educationEdititableItem, setEducationEdititableItem] = useState();
   const [workExperience, setWorkExperience] = useState(demoWorkExperience);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   function removeEducationItem(id) {
     setEducation(education.filter((item) => item.id !== id));
@@ -70,6 +73,18 @@ export function App() {
 
   function removeWorkExperienceItem(id) {
     setWorkExperience(workExperience.filter((item) => item.id !== id));
+  }
+
+  function editEducationItem(id) {
+    const item = education.find((item) => item.id === id);
+    setEducationEdititableItem(item);
+    setShowEditModal(true);
+  }
+
+  function saveEditEducationItem(item) {
+    console.log(item);
+    console.log(education);
+    // setEducation({...education})
   }
 
   return (
@@ -90,7 +105,7 @@ export function App() {
               {education.length !== 0 && (
                 <EducationDisplay>
                   {education.map((item) => (
-                    <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} />
+                    <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
                   ))}
                 </EducationDisplay>
               )}
@@ -105,6 +120,9 @@ export function App() {
           </Col>
         </Row>
       </Container>
+      {showEditModal && (
+        <EditModal setShowEditModal={setShowEditModal} educationEdititableItem={educationEdititableItem} saveEditEducationItem={saveEditEducationItem} />
+      )}
     </>
   );
 }

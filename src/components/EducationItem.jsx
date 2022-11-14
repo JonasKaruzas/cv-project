@@ -3,7 +3,7 @@ import pencil from '../images/pencil.svg';
 import deleteImg from '../images/delete.svg';
 
 
-export function EducationItem({education, removeEducationItem}) {
+export function EducationItem({education, removeEducationItem, editEducationItem}) {
   return (
     <div className='item'>
       <div className="item-title">{education.schoolName}</div>
@@ -12,8 +12,8 @@ export function EducationItem({education, removeEducationItem}) {
         <div className="item-date">{education.dateFrom} - {education.dateTo}</div>
       </div>
       <div className="buttons-container">
-        <button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit"><img src={deleteImg} /></button>
-        <button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit"><img src={pencil} /></button>
+        <button onClick={() => removeEducationItem(education.id)}><img src={deleteImg} /></button>
+        <button onClick={() => editEducationItem(education.id)}><img src={pencil} /></button>
       </div>
     </div>
   )
