@@ -1,0 +1,8 @@
+.WorkExperienceDisplay {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+}

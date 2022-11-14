@@ -1,10 +1,11 @@
-import Card from 'react-bootstrap/Card';
+import '../styles/workExperienceDisplay.css';
+import briefcase from '../images/briefcase.svg'
 
 export function WorkExperienceDisplay({children}) {
   return (
-    <Card style={{margin: 10}} bg='light'>
-      <Card.Header><h5>Work Experience</h5></Card.Header>
+    <div className='WorkExperienceDisplay'>
+      <div><img src={briefcase} alt=''/><span>Education</span></div>
       {children}
-    </Card>
+    </div>
   )
 }

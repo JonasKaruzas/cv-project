@@ -1,25 +1,22 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
+import '../styles/educationItem.css';
+import pencil from '../images/pencil.svg';
+import deleteImg from '../images/delete.svg';
 
 export function WorkExperienceItem({experience, removeWorkExperienceItem}) {
   return (
-    <Container>
-      <Card.Body >
-        <Row>
-          <Col>
-            <Card.Title>{experience.company}</Card.Title>
-            <Card.Subtitle>{experience.position} - {experience.mainTask}</Card.Subtitle>
-            <Card.Text>{experience.dateFrom} - {experience.dateTo}</Card.Text>
-          </Col>
-          <Col className='d-flex justify-content-center align-items-center'>
-            <Button onClick={() => removeWorkExperienceItem(experience.id)} variant="outline-danger" size="sm" type="submit">X</Button>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Container>
+    <div className='item'>
+      <div className="item-title">{experience.company}</div>
+      <div className="item-info-container">
+        <div className="item-info">{experience.position} - {experience.mainTask}</div>
+        <div className="item-date">{experience.dateFrom} - {experience.currentlyWorkingHere ? 'Currently working here' : experience.dateTo}</div>
+      </div>
+      <div className="buttons-container">
+        <button onClick={() => removeWorkExperienceItem(experience.id)} variant="outline-danger" size="sm" type="submit"><img src={deleteImg} /></button>
+        <button onClick={() => removeWorkExperienceItem(experience.id)} variant="outline-danger" size="sm" type="submit"><img src={pencil} /></button>
+      </div>
+    </div>
   )
+
 }
+
+

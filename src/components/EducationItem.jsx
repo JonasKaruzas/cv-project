@@ -1,25 +1,20 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import '../styles/educationItem.css';
+import pencil from '../images/pencil.svg';
+import deleteImg from '../images/delete.svg';
 
 
 export function EducationItem({education, removeEducationItem}) {
   return (
-    <Container>
-      <Card.Body >
-        <Row>
-          <Col>
-            <Card.Title>{education.schoolName}</Card.Title>
-            <Card.Subtitle>{education.degree}</Card.Subtitle>
-            <Card.Text>{education.dateFrom} - {education.dateTo}</Card.Text>
-          </Col>
-          <Col className='d-flex justify-content-center align-items-center'>
-            <Button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit">X</Button>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Container>
+    <div className='item'>
+      <div className="item-title">{education.schoolName}</div>
+      <div className="item-info-container">
+        <div className="item-info">{education.degree}</div>
+        <div className="item-date">{education.dateFrom} - {education.dateTo}</div>
+      </div>
+      <div className="buttons-container">
+        <button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit"><img src={deleteImg} /></button>
+        <button onClick={() => removeEducationItem(education.id)} variant="outline-danger" size="sm" type="submit"><img src={pencil} /></button>
+      </div>
+    </div>
   )
 }

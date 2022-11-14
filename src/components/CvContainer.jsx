@@ -1,9 +1,9 @@
-import Card from 'react-bootstrap/Card';
+import '../styles/cvContainer.css';
 
 export function CvContainer({ children }) {
   return (
-    <Card>
+    <div className='cv-container'>
       { children }
-    </Card>
+    </div>
   )
 }

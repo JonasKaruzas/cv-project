@@ -20,6 +20,7 @@ const demoGeneralInfo = {
   name: "Jonas Jonaitis",
   email: "jonas@jo.lt",
   phoneNumber: 866612345,
+  description: "Front End developer",
 };
 
 const demoEducationInfo = [
@@ -76,14 +77,14 @@ export function App() {
       <Header />
       <Container>
         <Row>
-          <Col>
+          <Col sm={4}>
             <div className="main">
               <GeneralInfo value={generalInfo} onChange={setGeneralInfo} />
               <Education education={education} setEducation={setEducation} />
               <WorkExperience workExperience={workExperience} setWorkExperience={setWorkExperience} />
             </div>
           </Col>
-          <Col>
+          <Col sm={8}>
             <CvContainer>
               <GeneralInfoDisplay generalInfo={generalInfo} />
               {education.length !== 0 && (

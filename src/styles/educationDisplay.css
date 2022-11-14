@@ -1,0 +1,7 @@
+.EducationDisplay {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}

@@ -15,6 +15,8 @@ export function GeneralInfo(props) {
             <Form.Group className="mb-3" >
               <Form.Label>Your name</Form.Label>
               <Form.Control type="text" placeholder="Jonas Jonaitis" id='name' value={props.value.name} onChange={updateState}/>
+              <Form.Label>About you</Form.Label>
+              <Form.Control type="text" placeholder="Front End developer" id='description' value={props.value.description} onChange={updateState}/>
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" placeholder="jonas@jo.lt" id='email' value={props.value.email} onChange={updateState}/>
               <Form.Label>Phone number</Form.Label>

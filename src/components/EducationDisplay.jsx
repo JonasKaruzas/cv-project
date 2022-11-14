@@ -1,10 +1,11 @@
-import Card from 'react-bootstrap/Card';
+import '../styles/educationDisplay.css';
+import school from '../images/school.svg';
 
 export function EducationDisplay({children}) {
   return (
-    <Card style={{margin: 10}} bg='light'>
-      <Card.Header><h5>Education</h5></Card.Header>
+    <div className='EducationDisplay'>
+      <div><img src={school} alt=''/><span>Education</span></div>
       {children}
-    </Card>
+    </div>
   )
 }
