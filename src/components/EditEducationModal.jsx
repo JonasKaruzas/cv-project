@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from 'react';
 
-export function EditModal({setShowEditModal, educationEditableItem, saveEditEducationItem}) {
+export function EditEducationModal({educationEditableItem, saveEditEducationItem}) {
 
 const [form, setForm] = useState(educationEditableItem);
 

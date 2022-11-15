@@ -8,7 +8,9 @@ import { EducationDisplay } from "./components/EducationDisplay";
 import { EducationItem } from "./components/EducationItem";
 import { WorkExperienceDisplay } from "./components/WorkExperienceDisplay";
 import { WorkExperienceItem } from "./components/WorkExperienceItem";
-import { EditModal } from "./components/EditModal";
+import { EditEducationModal } from "./components/EditEducationModal";
+import { EditWorkExperienceModal } from "./components/EditWorkExperienceModal";
+import Button from "react-bootstrap/Button";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -61,10 +63,10 @@ const demoWorkExperience = [
 ];
 
 export function App() {
-  const [generalInfo, setGeneralInfo] = useState(demoGeneralInfo);
-  const [education, setEducation] = useState(demoEducationInfo);
+  const [generalInfo, setGeneralInfo] = useState({});
+  const [education, setEducation] = useState([]);
+  const [workExperience, setWorkExperience] = useState([]);
   const [educationEditableItem, setEducationEditableItem] = useState();
-  const [workExperience, setWorkExperience] = useState(demoWorkExperience);
   const [workExperienceEditableItem, setWorkExperienceEditableItem] = useState();
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -87,6 +89,7 @@ export function App() {
     const newEducationState = [...education];
     newEducationState[indexOfEditableItem] = item;
     setEducation(newEducationState);
+    setEducationEditableItem(undefined);
     setShowEditModal(false);
   }
 
@@ -101,7 +104,14 @@ export function App() {
     const newWorkExperienceState = [...workExperience];
     newWorkExperienceState[indexOfEditableItem] = item;
     setWorkExperience(newWorkExperienceState);
+    setWorkExperienceEditableItem();
     setShowEditModal(false);
+  }
+
+  function showDemo() {
+    setGeneralInfo(demoGeneralInfo);
+    setEducation(demoEducationInfo);
+    setWorkExperience(demoWorkExperience);
   }
 
   return (
@@ -111,6 +121,11 @@ export function App() {
         <Row>
           <Col sm={4}>
             <div className="main">
+              <Row>
+                <Col>
+                  <Button onClick={showDemo}>- Demo -</Button>
+                </Col>
+              </Row>
               <GeneralInfo value={generalInfo} onChange={setGeneralInfo} />
               <Education education={education} setEducation={setEducation} />
               <WorkExperience workExperience={workExperience} setWorkExperience={setWorkExperience} />
@@ -118,7 +133,7 @@ export function App() {
           </Col>
           <Col sm={8}>
             <CvContainer>
-              <GeneralInfoDisplay generalInfo={generalInfo} />
+              {Object.keys(generalInfo).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
               {education.length !== 0 && (
                 <EducationDisplay>
                   {education.map((item) => (
@@ -142,8 +157,11 @@ export function App() {
           </Col>
         </Row>
       </Container>
-      {showEditModal && (
-        <EditModal setShowEditModal={setShowEditModal} educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
+      {showEditModal && educationEditableItem && (
+        <EditEducationModal educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
+      )}
+      {showEditModal && workExperienceEditableItem && (
+        <EditWorkExperienceModal workExperienceEditableItem={workExperienceEditableItem} saveWorkExperienceItem={saveWorkExperienceItem} />
       )}
     </>
   );
