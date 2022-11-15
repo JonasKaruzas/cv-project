@@ -6,9 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from 'react';
 
-export function EditModal({setShowEditModal, educationEdititableItem, saveEditEducationItem}) {
+export function EditModal({setShowEditModal, educationEditableItem, saveEditEducationItem}) {
 
-const [form, setForm] = useState(educationEdititableItem);
+const [form, setForm] = useState(educationEditableItem);
 
 function updateState(e) {
   setForm({...form, [e.target.id]: e.target.value})
@@ -20,7 +20,7 @@ function submitForm(e) {
 }
 
   return (
-    <div onClick={() => setShowEditModal(false)} className="editModal">
+    <div className="editModal">
         <Card>
           <Card.Header as="h5">Education</Card.Header>
           <Card.Body>

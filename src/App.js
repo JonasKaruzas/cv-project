@@ -63,8 +63,9 @@ const demoWorkExperience = [
 export function App() {
   const [generalInfo, setGeneralInfo] = useState(demoGeneralInfo);
   const [education, setEducation] = useState(demoEducationInfo);
-  const [educationEdititableItem, setEducationEdititableItem] = useState();
+  const [educationEditableItem, setEducationEditableItem] = useState();
   const [workExperience, setWorkExperience] = useState(demoWorkExperience);
+  const [workExperienceEditableItem, setWorkExperienceEditableItem] = useState();
   const [showEditModal, setShowEditModal] = useState(false);
 
   function removeEducationItem(id) {
@@ -77,14 +78,30 @@ export function App() {
 
   function editEducationItem(id) {
     const item = education.find((item) => item.id === id);
-    setEducationEdititableItem(item);
+    setEducationEditableItem(item);
     setShowEditModal(true);
   }
 
   function saveEditEducationItem(item) {
-    console.log(item);
-    console.log(education);
-    // setEducation({...education})
+    const indexOfEditableItem = education.findIndex((edu) => edu.id === educationEditableItem.id);
+    const newEducationState = [...education];
+    newEducationState[indexOfEditableItem] = item;
+    setEducation(newEducationState);
+    setShowEditModal(false);
+  }
+
+  function editWorkExperience(id) {
+    const item = workExperience.find((item) => item.id === id);
+    setWorkExperienceEditableItem(item);
+    setShowEditModal(true);
+  }
+
+  function saveWorkExperienceItem(item) {
+    const indexOfEditableItem = workExperience.findIndex((edu) => edu.id === workExperienceEditableItem.id);
+    const newWorkExperienceState = [...workExperience];
+    newWorkExperienceState[indexOfEditableItem] = item;
+    setWorkExperience(newWorkExperienceState);
+    setShowEditModal(false);
   }
 
   return (
@@ -112,7 +129,12 @@ export function App() {
               {workExperience.length !== 0 && (
                 <WorkExperienceDisplay>
                   {workExperience.map((item) => (
-                    <WorkExperienceItem key={item.id} experience={item} removeWorkExperienceItem={removeWorkExperienceItem} />
+                    <WorkExperienceItem
+                      key={item.id}
+                      experience={item}
+                      removeWorkExperienceItem={removeWorkExperienceItem}
+                      editWorkExperience={editWorkExperience}
+                    />
                   ))}
                 </WorkExperienceDisplay>
               )}
@@ -121,7 +143,7 @@ export function App() {
         </Row>
       </Container>
       {showEditModal && (
-        <EditModal setShowEditModal={setShowEditModal} educationEdititableItem={educationEdititableItem} saveEditEducationItem={saveEditEducationItem} />
+        <EditModal setShowEditModal={setShowEditModal} educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
       )}
     </>
   );

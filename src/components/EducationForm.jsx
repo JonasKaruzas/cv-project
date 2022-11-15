@@ -21,7 +21,7 @@ export function Education(props) {
 
   function submitForm(e) {
     e.preventDefault();
-    const maxId = props.education.map(item => item.id).sort((a,b) => a - b)[props.education.length -1];
+    const maxId = !props.education.length ? 0 : props.education.map(item => item.id).sort((a,b) => a - b)[props.education.length -1];
     props.setEducation([...props.education, {...form, id:maxId + 1}])
     setForm(initialFormState)
   }
