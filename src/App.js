@@ -29,15 +29,15 @@ const demoEducationInfo = [
     id: 1,
     schoolName: "VGTU",
     degree: "Masters",
-    dateFrom: 2000,
-    dateTo: 2004,
+    dateFrom: "2000-01-01",
+    dateTo: "2004-12-31",
   },
   {
     id: 2,
     schoolName: "VGTU",
     degree: "Bachelor",
-    dateFrom: 2005,
-    dateTo: 2010,
+    dateFrom: "2005-02-02",
+    dateTo: "2010-11-11",
   },
 ];
 
@@ -47,16 +47,16 @@ const demoWorkExperience = [
     company: "Maxima",
     position: "IT",
     mainTask: "Security",
-    dateFrom: 2000,
-    dateTo: 2004,
+    dateFrom: "2000-03-03",
+    dateTo: "2004-04-04",
   },
   {
     id: 2,
     company: "Lidl",
     position: "IT",
     mainTask: "Hacking",
-    dateFrom: 2005,
-    dateTo: 2010,
+    dateFrom: "2005-05-05",
+    dateTo: "2010-10-10",
   },
 ];
 

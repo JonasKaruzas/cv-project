@@ -11,8 +11,8 @@ export function WorkExperienceItem({experience, removeWorkExperienceItem, editWo
         <div className="item-date">{experience.dateFrom} - {experience.currentlyWorkingHere ? 'Currently working here' : experience.dateTo}</div>
       </div>
       <div className="buttons-container">
-        <button onClick={() => removeWorkExperienceItem(experience.id)} variant="outline-danger" size="sm" type="submit"><img src={deleteImg} /></button>
-        <button onClick={() => editWorkExperience(experience.id)}><img src={pencil} /></button>
+        <button onClick={() => removeWorkExperienceItem(experience.id)}><img alt='' src={deleteImg} /></button>
+        <button onClick={() => editWorkExperience(experience.id)}><img alt='' src={pencil} /></button>
       </div>
     </div>
   )

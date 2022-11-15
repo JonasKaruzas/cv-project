@@ -41,7 +41,7 @@ function submitForm(e) {
                   </Col>
                 </Row>
               </Form.Group>
-              <Button variant="primary" type="submit">EDIT</Button>
+              <Button variant="primary" type="submit">SAVE</Button>
           </Form>
         </Card.Body>
       </Card>

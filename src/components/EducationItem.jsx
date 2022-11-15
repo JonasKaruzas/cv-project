@@ -12,8 +12,8 @@ export function EducationItem({education, removeEducationItem, editEducationItem
         <div className="item-date">{education.dateFrom} - {education.dateTo}</div>
       </div>
       <div className="buttons-container">
-        <button onClick={() => removeEducationItem(education.id)}><img src={deleteImg} /></button>
-        <button onClick={() => editEducationItem(education.id)}><img src={pencil} /></button>
+        <button onClick={() => removeEducationItem(education.id)}><img alt='' src={deleteImg} /></button>
+        <button onClick={() => editEducationItem(education.id)}><img alt='' src={pencil} /></button>
       </div>
     </div>
   )
