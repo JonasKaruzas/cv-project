@@ -21,7 +21,7 @@ function submitForm(e) {
 
   return (
     <div className="editModal">
-        <Card>
+        <Card className='modalCard'>
           <Card.Header as="h5">Education</Card.Header>
           <Card.Body>
           <Form onSubmit={submitForm}>
