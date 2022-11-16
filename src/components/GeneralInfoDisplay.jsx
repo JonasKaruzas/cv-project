@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import email from '../images/email.svg';
 import phone from '../images/phone-in-talk.svg';
 import '../styles/generalInfoDisplay.css'
+import { AllStatesContext } from "./AllStatesContext";
 
-export function GeneralInfoDisplay({generalInfo}) {
+export function GeneralInfoDisplay() {
+  const {generalInfo} = useContext(AllStatesContext);
   return (
     <div className='header'>
       <div className='left'>

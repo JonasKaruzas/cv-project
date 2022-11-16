@@ -115,7 +115,7 @@ export function App() {
     setWorkExperience(demoState.demoWorkExperience);
   }
 
-  const values = {
+  const contextValues = {
     generalInfo,
     setGeneralInfo,
     education,
@@ -134,7 +134,7 @@ export function App() {
 
   return (
     <>
-      <AllStatesContext.Provider value={values}>
+      <AllStatesContext.Provider value={contextValues}>
         <Header />
         <Container>
           <Row>
@@ -153,7 +153,7 @@ export function App() {
             <Col sm={8}>
               {(Object.values(generalInfo).filter((item) => item).length !== 0 || workExperience.length !== 0 || education.length !== 0) && (
                 <CvContainer>
-                  {Object.values(generalInfo).filter((item) => item).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
+                  {Object.values(generalInfo).filter((item) => item).length !== 0 && <GeneralInfoDisplay />}
                   {education.length !== 0 && (
                     <EducationDisplay>
                       {education.map((item) => (
