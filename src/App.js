@@ -63,7 +63,7 @@ const demoWorkExperience = [
 ];
 
 export function App() {
-  const [generalInfo, setGeneralInfo] = useState({});
+  const [generalInfo, setGeneralInfo] = useState({ name: "", email: "", phoneNumber: "", description: "" });
   const [education, setEducation] = useState([]);
   const [workExperience, setWorkExperience] = useState([]);
   const [educationEditableItem, setEducationEditableItem] = useState();
