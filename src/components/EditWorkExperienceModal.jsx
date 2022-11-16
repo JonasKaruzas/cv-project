@@ -5,8 +5,12 @@ import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from 'react';
+import { AllStatesContext } from "./AllStatesContext";
+import { useContext } from 'react';
 
-export function EditWorkExperienceModal(props) {
+export function EditWorkExperienceModal() {
+  const {workExperienceEditableItem, saveWorkExperienceItem} = useContext(AllStatesContext);
+
   const initialFormState = {
     company: "",
     position: "",
@@ -15,7 +19,7 @@ export function EditWorkExperienceModal(props) {
     dateTo: "",
   };
 
-  const [form, setForm] = useState(props.workExperienceEditableItem);
+  const [form, setForm] = useState(workExperienceEditableItem);
   const [currentlyWorkingChecked, setCurrentlyWorkingChecked] = useState(false);
 
   function updateState(e) {
@@ -24,7 +28,7 @@ export function EditWorkExperienceModal(props) {
 
   function submitForm(e) {
     e.preventDefault();
-    props.saveWorkExperienceItem(form);
+    saveWorkExperienceItem(form);
     setCurrentlyWorkingChecked(false);
   }
 

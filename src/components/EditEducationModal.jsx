@@ -5,8 +5,11 @@ import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from 'react';
+import { AllStatesContext } from "./AllStatesContext";
+import { useContext } from 'react';
 
-export function EditEducationModal({educationEditableItem, saveEditEducationItem}) {
+export function EditEducationModal() {
+const {educationEditableItem, saveEditEducationItem} = useContext(AllStatesContext);
 
 const [form, setForm] = useState(educationEditableItem);
 

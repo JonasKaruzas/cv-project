@@ -1,9 +1,11 @@
 import '../styles/educationItem.css';
 import pencil from '../images/pencil.svg';
 import deleteImg from '../images/delete.svg';
+import { AllStatesContext } from "./AllStatesContext";
+import { useContext } from 'react';
 
-
-export function EducationItem({education, removeEducationItem, editEducationItem}) {
+export function EducationItem({education}) {
+  const {removeEducationItem, editEducationItem} = useContext(AllStatesContext);
   return (
     <div className='item'>
       <div className="item-title">{education.schoolName}</div>

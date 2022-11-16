@@ -115,9 +115,26 @@ export function App() {
     setWorkExperience(demoState.demoWorkExperience);
   }
 
+  const values = {
+    generalInfo,
+    setGeneralInfo,
+    education,
+    setEducation,
+    workExperience,
+    setWorkExperience,
+    educationEditableItem,
+    workExperienceEditableItem,
+    saveEditEducationItem,
+    saveWorkExperienceItem,
+    removeWorkExperienceItem,
+    editWorkExperience,
+    removeEducationItem,
+    editEducationItem,
+  };
+
   return (
     <>
-      <AllStatesContext.Provider value={{ generalInfo, setGeneralInfo, education, setEducation, workExperience, setWorkExperience }}>
+      <AllStatesContext.Provider value={values}>
         <Header />
         <Container>
           <Row>
@@ -140,19 +157,14 @@ export function App() {
                   {education.length !== 0 && (
                     <EducationDisplay>
                       {education.map((item) => (
-                        <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
+                        <EducationItem key={item.id} education={item} />
                       ))}
                     </EducationDisplay>
                   )}
                   {workExperience.length !== 0 && (
                     <WorkExperienceDisplay>
                       {workExperience.map((item) => (
-                        <WorkExperienceItem
-                          key={item.id}
-                          experience={item}
-                          removeWorkExperienceItem={removeWorkExperienceItem}
-                          editWorkExperience={editWorkExperience}
-                        />
+                        <WorkExperienceItem key={item.id} experience={item} />
                       ))}
                     </WorkExperienceDisplay>
                   )}
@@ -161,12 +173,8 @@ export function App() {
             </Col>
           </Row>
         </Container>
-        {showEditModal && educationEditableItem && (
-          <EditEducationModal educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
-        )}
-        {showEditModal && workExperienceEditableItem && (
-          <EditWorkExperienceModal workExperienceEditableItem={workExperienceEditableItem} saveWorkExperienceItem={saveWorkExperienceItem} />
-        )}
+        {showEditModal && educationEditableItem && <EditEducationModal />}
+        {showEditModal && workExperienceEditableItem && <EditWorkExperienceModal />}
       </AllStatesContext.Provider>
     </>
   );

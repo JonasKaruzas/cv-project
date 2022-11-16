@@ -1,8 +1,11 @@
 import '../styles/educationItem.css';
 import pencil from '../images/pencil.svg';
 import deleteImg from '../images/delete.svg';
+import { AllStatesContext } from "./AllStatesContext";
+import { useContext } from 'react';
 
-export function WorkExperienceItem({experience, removeWorkExperienceItem, editWorkExperience}) {
+export function WorkExperienceItem({experience}) {
+  const {removeWorkExperienceItem, editWorkExperience} = useContext(AllStatesContext);
   return (
     <div className='item'>
       <div className="item-title">{experience.company}</div>
