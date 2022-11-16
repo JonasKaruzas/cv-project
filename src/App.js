@@ -10,8 +10,8 @@ import { WorkExperienceDisplay } from "./components/WorkExperienceDisplay";
 import { WorkExperienceItem } from "./components/WorkExperienceItem";
 import { EditEducationModal } from "./components/EditEducationModal";
 import { EditWorkExperienceModal } from "./components/EditWorkExperienceModal";
-import Button from "react-bootstrap/Button";
 
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,48 +19,48 @@ import "./styles/app.css";
 
 import { useState } from "react";
 
-const demoGeneralInfo = {
-  name: "Jonas Jonaitis",
-  email: "jonas@jo.lt",
-  phoneNumber: 866612345,
-  description: "Front End developer",
+const demoState = {
+  demoGeneralInfo: {
+    name: "Jonas Jonaitis",
+    email: "jonas@jo.lt",
+    phoneNumber: 866612345,
+    description: "Front End developer",
+  },
+  demoEducationInfo: [
+    {
+      id: 1,
+      schoolName: "VGTU",
+      degree: "Masters",
+      dateFrom: "2000-01-01",
+      dateTo: "2004-12-31",
+    },
+    {
+      id: 2,
+      schoolName: "VGTU",
+      degree: "Bachelor",
+      dateFrom: "2005-02-02",
+      dateTo: "2010-11-11",
+    },
+  ],
+  demoWorkExperience: [
+    {
+      id: 1,
+      company: "Maxima",
+      position: "IT",
+      mainTask: "Security",
+      dateFrom: "2000-03-03",
+      dateTo: "2004-04-04",
+    },
+    {
+      id: 2,
+      company: "Lidl",
+      position: "IT",
+      mainTask: "Hacking",
+      dateFrom: "2005-05-05",
+      dateTo: "2010-10-10",
+    },
+  ],
 };
-
-const demoEducationInfo = [
-  {
-    id: 1,
-    schoolName: "VGTU",
-    degree: "Masters",
-    dateFrom: "2000-01-01",
-    dateTo: "2004-12-31",
-  },
-  {
-    id: 2,
-    schoolName: "VGTU",
-    degree: "Bachelor",
-    dateFrom: "2005-02-02",
-    dateTo: "2010-11-11",
-  },
-];
-
-const demoWorkExperience = [
-  {
-    id: 1,
-    company: "Maxima",
-    position: "IT",
-    mainTask: "Security",
-    dateFrom: "2000-03-03",
-    dateTo: "2004-04-04",
-  },
-  {
-    id: 2,
-    company: "Lidl",
-    position: "IT",
-    mainTask: "Hacking",
-    dateFrom: "2005-05-05",
-    dateTo: "2010-10-10",
-  },
-];
 
 export function App() {
   const [generalInfo, setGeneralInfo] = useState({ name: "", email: "", phoneNumber: "", description: "" });
@@ -109,9 +109,9 @@ export function App() {
   }
 
   function showDemo() {
-    setGeneralInfo(demoGeneralInfo);
-    setEducation(demoEducationInfo);
-    setWorkExperience(demoWorkExperience);
+    setGeneralInfo(demoState.demoGeneralInfo);
+    setEducation(demoState.demoEducationInfo);
+    setWorkExperience(demoState.demoWorkExperience);
   }
 
   return (
