@@ -10,6 +10,7 @@ import { WorkExperienceDisplay } from "./components/WorkExperienceDisplay";
 import { WorkExperienceItem } from "./components/WorkExperienceItem";
 import { EditEducationModal } from "./components/EditEducationModal";
 import { EditWorkExperienceModal } from "./components/EditWorkExperienceModal";
+import { AllStatesContext } from "./components/AllStatesContext";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -17,7 +18,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./styles/app.css";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 const demoState = {
   demoGeneralInfo: {
@@ -116,55 +117,57 @@ export function App() {
 
   return (
     <>
-      <Header />
-      <Container>
-        <Row>
-          <Col sm={4}>
-            <div className="main">
-              <Row>
-                <Col>
-                  <Button onClick={showDemo}>- Demo -</Button>
-                </Col>
-              </Row>
-              <GeneralInfo value={generalInfo} onChange={setGeneralInfo} />
-              <Education education={education} setEducation={setEducation} />
-              <WorkExperience workExperience={workExperience} setWorkExperience={setWorkExperience} />
-            </div>
-          </Col>
-          <Col sm={8}>
-            {(Object.values(generalInfo).filter((item) => item).length !== 0 || workExperience.length !== 0 || education.length !== 0) && (
-              <CvContainer>
-                {Object.values(generalInfo).filter((item) => item).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
-                {education.length !== 0 && (
-                  <EducationDisplay>
-                    {education.map((item) => (
-                      <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
-                    ))}
-                  </EducationDisplay>
-                )}
-                {workExperience.length !== 0 && (
-                  <WorkExperienceDisplay>
-                    {workExperience.map((item) => (
-                      <WorkExperienceItem
-                        key={item.id}
-                        experience={item}
-                        removeWorkExperienceItem={removeWorkExperienceItem}
-                        editWorkExperience={editWorkExperience}
-                      />
-                    ))}
-                  </WorkExperienceDisplay>
-                )}
-              </CvContainer>
-            )}
-          </Col>
-        </Row>
-      </Container>
-      {showEditModal && educationEditableItem && (
-        <EditEducationModal educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
-      )}
-      {showEditModal && workExperienceEditableItem && (
-        <EditWorkExperienceModal workExperienceEditableItem={workExperienceEditableItem} saveWorkExperienceItem={saveWorkExperienceItem} />
-      )}
+      <AllStatesContext.Provider value={{ generalInfo, setGeneralInfo, education, setEducation, workExperience, setWorkExperience }}>
+        <Header />
+        <Container>
+          <Row>
+            <Col sm={4}>
+              <div className="main">
+                <Row>
+                  <Col>
+                    <Button onClick={showDemo}>- Demo -</Button>
+                  </Col>
+                </Row>
+                <GeneralInfo />
+                <Education />
+                <WorkExperience />
+              </div>
+            </Col>
+            <Col sm={8}>
+              {(Object.values(generalInfo).filter((item) => item).length !== 0 || workExperience.length !== 0 || education.length !== 0) && (
+                <CvContainer>
+                  {Object.values(generalInfo).filter((item) => item).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
+                  {education.length !== 0 && (
+                    <EducationDisplay>
+                      {education.map((item) => (
+                        <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
+                      ))}
+                    </EducationDisplay>
+                  )}
+                  {workExperience.length !== 0 && (
+                    <WorkExperienceDisplay>
+                      {workExperience.map((item) => (
+                        <WorkExperienceItem
+                          key={item.id}
+                          experience={item}
+                          removeWorkExperienceItem={removeWorkExperienceItem}
+                          editWorkExperience={editWorkExperience}
+                        />
+                      ))}
+                    </WorkExperienceDisplay>
+                  )}
+                </CvContainer>
+              )}
+            </Col>
+          </Row>
+        </Container>
+        {showEditModal && educationEditableItem && (
+          <EditEducationModal educationEditableItem={educationEditableItem} saveEditEducationItem={saveEditEducationItem} />
+        )}
+        {showEditModal && workExperienceEditableItem && (
+          <EditWorkExperienceModal workExperienceEditableItem={workExperienceEditableItem} saveWorkExperienceItem={saveWorkExperienceItem} />
+        )}
+      </AllStatesContext.Provider>
     </>
   );
 }

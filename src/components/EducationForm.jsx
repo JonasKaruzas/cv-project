@@ -4,8 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from 'react';
+import { AllStatesContext } from "./AllStatesContext";
+import { useContext } from 'react';
 
-export function Education(props) {
+export function Education() {
+  const {education, setEducation} = useContext(AllStatesContext);
+
   const initialFormState = {
       schoolName: "",
       degree: "",
@@ -21,8 +25,8 @@ export function Education(props) {
 
   function submitForm(e) {
     e.preventDefault();
-    const maxId = !props.education.length ? 0 : props.education.map(item => item.id).sort((a,b) => a - b)[props.education.length -1];
-    props.setEducation([...props.education, {...form, id:maxId + 1}])
+    const maxId = !education.length ? 0 : education.map(item => item.id).sort((a,b) => a - b)[education.length -1];
+    setEducation([...education, {...form, id:maxId + 1}])
     setForm(initialFormState)
   }
 

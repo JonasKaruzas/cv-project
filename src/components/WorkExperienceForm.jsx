@@ -3,9 +3,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AllStatesContext } from "./AllStatesContext";
 
-export function WorkExperience(props) {
+export function WorkExperience() {
+  const {workExperience, setWorkExperience} = useContext(AllStatesContext);
+
   const initialFormState = {
     company: "",
     position: "",
@@ -23,8 +26,8 @@ export function WorkExperience(props) {
 
   function submitForm(e) {
     e.preventDefault();
-    const maxId = props.workExperience.map(item => item.id).sort((a,b) => a - b)[props.workExperience.length -1];
-    props.setWorkExperience([...props.workExperience, {...form, id:maxId + 1, currentlyWorkingHere: currentlyWorkingChecked}])
+    const maxId = workExperience.map(item => item.id).sort((a,b) => a - b)[workExperience.length -1];
+    setWorkExperience([...workExperience, {...form, id:maxId + 1, currentlyWorkingHere: currentlyWorkingChecked}])
     setForm(initialFormState)
     setCurrentlyWorkingChecked(false);
   }

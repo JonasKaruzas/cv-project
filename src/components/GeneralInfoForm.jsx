@@ -1,10 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import { useContext } from 'react';
+import { AllStatesContext } from "./AllStatesContext";
 
-export function GeneralInfo(props) {
+export function GeneralInfo() {
+  const {generalInfo, setGeneralInfo} = useContext(AllStatesContext);
 
   function updateState(e) {
-    props.onChange({...props.value, [e.target.id]: e.target.value})
+    setGeneralInfo({...generalInfo, [e.target.id]: e.target.value})
   }
 
   return (
@@ -14,13 +17,13 @@ export function GeneralInfo(props) {
         <Form>
             <Form.Group className="mb-3" >
               <Form.Label>Your name</Form.Label>
-              <Form.Control type="text" id='name' value={props.value.name} onChange={updateState}/>
+              <Form.Control type="text" id='name' value={generalInfo.name} onChange={updateState}/>
               <Form.Label>About you</Form.Label>
-              <Form.Control type="text" id='description' value={props.value.description} onChange={updateState}/>
+              <Form.Control type="text" id='description' value={generalInfo.description} onChange={updateState}/>
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" id='email' value={props.value.email} onChange={updateState}/>
+              <Form.Control type="email" id='email' value={generalInfo.email} onChange={updateState}/>
               <Form.Label>Phone number</Form.Label>
-              <Form.Control type="number" id='phoneNumber' value={props.value.phoneNumber} onChange={updateState}/>
+              <Form.Control type="number" id='phoneNumber' value={generalInfo.phoneNumber} onChange={updateState}/>
             </Form.Group>
           </Form>
       </Card.Body>
