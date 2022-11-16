@@ -132,28 +132,30 @@ export function App() {
             </div>
           </Col>
           <Col sm={8}>
-            <CvContainer>
-              {Object.keys(generalInfo).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
-              {education.length !== 0 && (
-                <EducationDisplay>
-                  {education.map((item) => (
-                    <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
-                  ))}
-                </EducationDisplay>
-              )}
-              {workExperience.length !== 0 && (
-                <WorkExperienceDisplay>
-                  {workExperience.map((item) => (
-                    <WorkExperienceItem
-                      key={item.id}
-                      experience={item}
-                      removeWorkExperienceItem={removeWorkExperienceItem}
-                      editWorkExperience={editWorkExperience}
-                    />
-                  ))}
-                </WorkExperienceDisplay>
-              )}
-            </CvContainer>
+            {(Object.values(generalInfo).filter((item) => item).length !== 0 || workExperience.length !== 0 || education.length !== 0) && (
+              <CvContainer>
+                {Object.values(generalInfo).filter((item) => item).length !== 0 && <GeneralInfoDisplay generalInfo={generalInfo} />}
+                {education.length !== 0 && (
+                  <EducationDisplay>
+                    {education.map((item) => (
+                      <EducationItem key={item.id} education={item} removeEducationItem={removeEducationItem} editEducationItem={editEducationItem} />
+                    ))}
+                  </EducationDisplay>
+                )}
+                {workExperience.length !== 0 && (
+                  <WorkExperienceDisplay>
+                    {workExperience.map((item) => (
+                      <WorkExperienceItem
+                        key={item.id}
+                        experience={item}
+                        removeWorkExperienceItem={removeWorkExperienceItem}
+                        editWorkExperience={editWorkExperience}
+                      />
+                    ))}
+                  </WorkExperienceDisplay>
+                )}
+              </CvContainer>
+            )}
           </Col>
         </Row>
       </Container>

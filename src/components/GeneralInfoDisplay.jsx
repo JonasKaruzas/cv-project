@@ -10,8 +10,8 @@ export function GeneralInfoDisplay({generalInfo}) {
         <h4>{generalInfo.description}</h4> 
       </div>
       <div className='right'>
-        <div><img src={email} alt='' />{generalInfo.email}</div>
-        <div><img src={phone} alt="" />{generalInfo.phoneNumber}</div>
+        {generalInfo.email && <div><img src={email} alt='' />{generalInfo.email}</div>}
+        {generalInfo.phoneNumber && <div><img src={phone} alt="" />{generalInfo.phoneNumber}</div>}
       </div>
     </div>
   )

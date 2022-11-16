@@ -57,7 +57,7 @@ export function EditWorkExperienceModal(props) {
                 </Col>
               </Row>
             </Form.Group>
-            <Button variant="primary" type="submit">Add</Button>
+            <Button variant="primary" type="submit">SAVE</Button>
           </Form>
         </Card.Body>
       </Card>
