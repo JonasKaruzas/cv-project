@@ -11,25 +11,25 @@ import { useContext } from 'react';
 export function EditWorkExperienceModal() {
   const {workExperienceEditableItem, saveWorkExperienceItem} = useContext(AllStatesContext);
 
-  const initialFormState = {
-    company: "",
-    position: "",
-    mainTask: "",
-    dateFrom: "",
-    dateTo: "",
-  };
-
   const [form, setForm] = useState(workExperienceEditableItem);
-  const [currentlyWorkingChecked, setCurrentlyWorkingChecked] = useState(false);
+  const [currentlyWorkingChecked, setCurrentlyWorkingChecked] = useState(workExperienceEditableItem.currentlyWorkingHere);
 
   function updateState(e) {
     setForm({...form, [e.target.id]: e.target.value})
   }
 
+  function updateFormWithCheck(e) {
+    console.log(form);
+    console.log(e.target);
+    setCurrentlyWorkingChecked(e.target.checked)
+    setForm({...form, currentlyWorkingHere: currentlyWorkingChecked})
+    console.log(form);
+  }
+
   function submitForm(e) {
     e.preventDefault();
     saveWorkExperienceItem(form);
-    setCurrentlyWorkingChecked(false);
+    // setCurrentlyWorkingChecked(false);
   }
 
   return (
@@ -57,7 +57,7 @@ export function EditWorkExperienceModal() {
                   <Form.Control type="date" id='dateTo' value={form.dateTo} onChange={updateState} disabled={currentlyWorkingChecked}/>
                 </Col>
                 <Col className='d-flex align-items-end my-1'>
-                  <Form.Check checked={currentlyWorkingChecked} onChange={(e) => setCurrentlyWorkingChecked(e.target.checked)} type="checkbox" label="Currently working here" />
+                  <Form.Check checked={currentlyWorkingChecked} onChange={updateFormWithCheck} type="checkbox" label="Currently working here" />
                 </Col>
               </Row>
             </Form.Group>

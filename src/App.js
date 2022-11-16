@@ -51,6 +51,7 @@ const demoState = {
       mainTask: "Security",
       dateFrom: "2000-03-03",
       dateTo: "2004-04-04",
+      currentlyWorkingHere: false,
     },
     {
       id: 2,
@@ -58,7 +59,8 @@ const demoState = {
       position: "IT",
       mainTask: "Hacking",
       dateFrom: "2005-05-05",
-      dateTo: "2010-10-10",
+      dateTo: "",
+      currentlyWorkingHere: true,
     },
   ],
 };

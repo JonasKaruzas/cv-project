@@ -11,7 +11,8 @@ export function WorkExperienceItem({experience}) {
       <div className="item-title">{experience.company}</div>
       <div className="item-info-container">
         <div className="item-info">{experience.position} - {experience.mainTask}</div>
-        <div className="item-date">{experience.dateFrom} - {experience.currentlyWorkingHere ? 'Currently working here' : experience.dateTo}</div>
+        <div className="item-date">From: {experience.dateFrom}</div>
+        <div className="item-date">{experience.currentlyWorkingHere ? '*Currently working here' : 'To: ' + experience.dateTo}</div>
       </div>
       <div className="buttons-container">
         <button onClick={() => removeWorkExperienceItem(experience.id)}><img alt='' src={deleteImg} /></button>
