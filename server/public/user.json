@@ -1,0 +1,44 @@
+{
+  "demoGeneralInfo": {
+    "name": "Jonas Jonaitis",
+    "email": "jonas@jo.lt",
+    "phoneNumber": 866612345,
+    "description": "Front End developer"
+  },
+  "demoEducationInfo": [
+    {
+      "id": 1,
+      "schoolName": "VGTU",
+      "degree": "Masters",
+      "dateFrom": "2000-01-01",
+      "dateTo": "2004-12-31"
+    },
+    {
+      "id": 2,
+      "schoolName": "VGTU",
+      "degree": "Bachelor",
+      "dateFrom": "2005-02-02",
+      "dateTo": "2010-11-11"
+    }
+  ],
+  "demoWorkExperience": [
+    {
+      "id": 1,
+      "company": "Maxima",
+      "position": "IT",
+      "mainTask": "Security",
+      "dateFrom": "2000-03-03",
+      "dateTo": "2004-04-04",
+      "currentlyWorkingHere": false
+    },
+    {
+      "id": 2,
+      "company": "Lidl",
+      "position": "IT",
+      "mainTask": "Hacking",
+      "dateFrom": "2005-05-05",
+      "dateTo": "",
+      "currentlyWorkingHere": true
+    }
+  ]
+}

@@ -117,6 +117,15 @@ export function App() {
     setWorkExperience(demoState.demoWorkExperience);
   }
 
+  async function getDemoFromFile() {
+    const response = await fetch("http://localhost:5000");
+    const json = await response.json();
+
+    setGeneralInfo(json.demoGeneralInfo);
+    setEducation(json.demoEducationInfo);
+    setWorkExperience(json.demoWorkExperience);
+  }
+
   const contextValues = {
     generalInfo,
     setGeneralInfo,
@@ -145,6 +154,9 @@ export function App() {
                 <Row>
                   <Col>
                     <Button onClick={showDemo}>- Demo -</Button>
+                    <Button style={{ float: "right" }} onClick={getDemoFromFile}>
+                      ! Get from File !
+                    </Button>
                   </Col>
                 </Row>
                 <GeneralInfo />
